@@ -147,7 +147,7 @@ static const struct XMLElt rootDesc[] =
 		/* urn:schemas-upnp-org:device:InternetGatewayDevice:1 or 2 */
 #ifdef ENABLE_MANUFACTURER_INFO_CONFIGURATION
 	{"/friendlyName", friendly_name/*ROOTDEV_FRIENDLYNAME*/},	/* required */
-	{"/manufacturer", manufacturer_name/*ROOTDEV_MANUFACTURER*/},		/* required */
+	{"/manufacturer", ROOTDEV_MANUFACTURER},		/* required */
 /* 8 */
 	{"/manufacturerURL", manufacturer_url/*ROOTDEV_MANUFACTURERURL*/},	/* optional */
 	{"/modelDescription", model_description/*ROOTDEV_MODELDESCRIPTION*/}, /* recommended */
@@ -155,12 +155,12 @@ static const struct XMLElt rootDesc[] =
 	{"/modelNumber", modelnumber},
 	{"/modelURL", model_url/*ROOTDEV_MODELURL*/},
 #else
-	{"/friendlyName", ROOTDEV_FRIENDLYNAME},	/* required */
-	{"/manufacturer", ROOTDEV_MANUFACTURER},	/* required */
+	{"/friendlyName", ROOTDEV_FRIENDLYNAME},        /* required */
+	{"/manufacturer", ROOTDEV_MANUFACTURER},        /* required */
 /* 8 */
-	{"/manufacturerURL", ROOTDEV_MANUFACTURERURL},	/* optional */
+	{"/manufacturerURL", ROOTDEV_MANUFACTURERURL},  /* optional */
 	{"/modelDescription", ROOTDEV_MODELDESCRIPTION}, /* recommended */
-	{"/modelName", ROOTDEV_MODELNAME},	/* required */
+	{"/modelName", ROOTDEV_MODELNAME},      /* required */
 	{"/modelNumber", modelnumber},
 	{"/modelURL", ROOTDEV_MODELURL},
 #endif
