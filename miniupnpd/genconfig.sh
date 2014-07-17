@@ -76,6 +76,12 @@ if [ -f ../shared/tomato_version ]; then
 	OS_VERSION="Tomato $(cat ../shared/tomato_version)"
 fi
 
+# Asuswrt
+if [ -d ../asuswebstorage ]; then
+	OS_NAME=AsusWRT
+	OS_VERSION="AsusWRT"
+fi
+
 ${RM} ${CONFIGFILE}
 
 echo "/* MiniUPnP Project" >> ${CONFIGFILE}
@@ -273,6 +279,21 @@ case $OS_NAME in
 		echo "#ifdef TCONFIG_IPV6" >> ${CONFIGFILE}
 		echo "#define ENABLE_IPV6" >> ${CONFIGFILE}
 		echo "#endif" >> ${CONFIGFILE}
+		FW=netfilter
+		;;
+	AsusWRT)
+		OS_NAME=UPnP
+		OS_URL=http://www.asus.com/
+		echo "#define USE_NETFILTER 1" >> ${CONFIGFILE}
+		echo "" >> ${CONFIGFILE}
+#		echo "#include <tomato_config.h>" >> ${CONFIGFILE}
+#		echo "" >> ${CONFIGFILE}
+		echo "#ifdef LINUX26" >> ${CONFIGFILE}
+		echo "#define USE_IFACEWATCHER 1" >> ${CONFIGFILE}
+		echo "#endif" >> ${CONFIGFILE}
+#		echo "#ifdef RTCONFIG_IPV6" >> ${CONFIGFILE}
+#		echo "#define ENABLE_IPV6" >> ${CONFIGFILE}
+#		echo "#endif" >> ${CONFIGFILE}
 		FW=netfilter
 		;;
 	Darwin)
